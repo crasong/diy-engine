@@ -15,9 +15,9 @@ endif()
 # Enable optimizations in release mode
 set(CMAKE_CXX_FLAGS_RELEASE "-O3")
 
-# Find SDL2 (only external dependency for windowing)
-find_package(SDL2 REQUIRED)
-include_directories(${SDL2_INCLUDE_DIRS})
+# Find SDL3 (only external dependency for windowing)
+find_package(SDL3 REQUIRED)
+include_directories(${SDL3_INCLUDE_DIRS})
 
 # Include directories
 include_directories(src)
@@ -35,8 +35,8 @@ set(SOURCES
 # Create executable
 add_executable(renderer ${SOURCES})
 
-# Link libraries (only SDL2)
-target_link_libraries(renderer ${SDL2_LIBRARIES})
+# Link libraries (only SDL3)
+target_link_libraries(renderer SDL3::SDL3)
 
 # Optional: Add debug/release configurations
 if(CMAKE_BUILD_TYPE STREQUAL "Debug")

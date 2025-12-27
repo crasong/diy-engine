@@ -4,23 +4,23 @@ Quick setup guide to start building your software renderer.
 
 ## Project Setup
 
-### Option 1: C++ with SDL2 (Recommended for beginners)
+### Option 1: C++ with SDL3 (Recommended for beginners)
 
 #### Install Dependencies
 
 **Linux (Ubuntu/Debian)**
 ```bash
-sudo apt-get install build-essential cmake libsdl2-dev
+sudo apt-get install build-essential cmake libsdl3-dev
 ```
 
 **macOS**
 ```bash
-brew install cmake sdl2
+brew install cmake sdl3
 ```
 
 **Windows**
-- Download SDL2 development libraries from https://www.libsdl.org/
-- Or use vcpkg: `vcpkg install sdl2`
+- Download SDL3 development libraries from https://www.libsdl.org/
+- Or use vcpkg: `vcpkg install sdl3`
 
 #### Project Structure
 ```
@@ -47,16 +47,16 @@ project(DIYEngine)
 
 set(CMAKE_CXX_STANDARD 17)
 
-# Find SDL2
-find_package(SDL2 REQUIRED)
-include_directories(${SDL2_INCLUDE_DIRS})
+# Find SDL3
+find_package(SDL3 REQUIRED)
+include_directories(${SDL3_INCLUDE_DIRS})
 
 # Source files
 file(GLOB_RECURSE SOURCES "src/*.cpp")
 
 # Executable
 add_executable(renderer ${SOURCES})
-target_link_libraries(renderer ${SDL2_LIBRARIES})
+target_link_libraries(renderer SDL3::SDL3)
 ```
 
 #### Build and Run
@@ -72,7 +72,7 @@ make
 
 ### Option 2: C++ with GLFW
 
-Replace SDL2 with GLFW for a lighter alternative:
+Replace SDL3 with GLFW for a lighter alternative:
 ```bash
 # Install GLFW
 sudo apt-get install libglfw3-dev  # Linux
@@ -132,11 +132,11 @@ pygame.quit()
 ### Goal
 Create a window, draw pixels, display a gradient.
 
-### C++ Implementation (SDL2)
+### C++ Implementation (SDL3)
 
 **main.cpp**
 ```cpp
-#include <SDL2/SDL.h>
+#include <SDL3/SDL.h>
 #include <vector>
 #include <cstdint>
 
@@ -172,21 +172,19 @@ uint32_t RGB(uint8_t r, uint8_t g, uint8_t b) {
 
 int main(int argc, char* argv[]) {
     // Initialize SDL
-    if (SDL_Init(SDL_INIT_VIDEO) < 0) {
+    if (!SDL_Init(SDL_INIT_VIDEO)) {
         return 1;
     }
 
     // Create window
     SDL_Window* window = SDL_CreateWindow(
         "DIY Renderer",
-        SDL_WINDOWPOS_CENTERED,
-        SDL_WINDOWPOS_CENTERED,
         WIDTH, HEIGHT,
-        SDL_WINDOW_SHOWN
+        0  // default flags
     );
 
     // Create renderer
-    SDL_Renderer* renderer = SDL_CreateRenderer(window, -1, 0);
+    SDL_Renderer* renderer = SDL_CreateRenderer(window, nullptr);
     SDL_Texture* texture = SDL_CreateTexture(
         renderer,
         SDL_PIXELFORMAT_ARGB8888,
@@ -243,7 +241,7 @@ int main(int argc, char* argv[]) {
 
 ### Compile and Run
 ```bash
-g++ main.cpp -o renderer -lSDL2
+g++ main.cpp -o renderer -lSDL3
 ./renderer
 ```
 

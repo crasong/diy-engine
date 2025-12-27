@@ -4,7 +4,7 @@ A from-scratch 3D software renderer built to learn graphics programming fundamen
 
 ## Philosophy
 
-This project uses **minimal external dependencies** - only SDL2 for windowing and pixel display. Everything else (math, rasterization, transformations, lighting, textures) is implemented from scratch.
+This project uses **minimal external dependencies** - only SDL3 for windowing and pixel display. Everything else (math, rasterization, transformations, lighting, textures) is implemented from scratch.
 
 ## Quick Start
 
@@ -12,17 +12,17 @@ This project uses **minimal external dependencies** - only SDL2 for windowing an
 
 **Linux (Ubuntu/Debian)**
 ```bash
-sudo apt-get install build-essential cmake libsdl2-dev
+sudo apt-get install build-essential cmake libsdl3-dev
 ```
 
 **macOS**
 ```bash
-brew install cmake sdl2
+brew install cmake sdl3
 ```
 
 **Windows**
 - Install Visual Studio or MinGW
-- Download SDL2 from https://www.libsdl.org/ or use vcpkg: `vcpkg install sdl2`
+- Download SDL3 from https://www.libsdl.org/ or use vcpkg: `vcpkg install sdl3`
 
 ### Build and Run
 

@@ -5,16 +5,14 @@ Window::Window(const std::string& title, int width, int height)
     : window(nullptr), renderer(nullptr), texture(nullptr),
       width(width), height(height) {
 
-    if (SDL_Init(SDL_INIT_VIDEO) < 0) {
+    if (!SDL_Init(SDL_INIT_VIDEO)) {
         throw std::runtime_error("Failed to initialize SDL");
     }
 
     window = SDL_CreateWindow(
         title.c_str(),
-        SDL_WINDOWPOS_CENTERED,
-        SDL_WINDOWPOS_CENTERED,
         width, height,
-        SDL_WINDOW_SHOWN
+        0  // flags - 0 for default window
     );
 
     if (!window) {
@@ -22,7 +20,7 @@ Window::Window(const std::string& title, int width, int height)
         throw std::runtime_error("Failed to create window");
     }
 
-    renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
+    renderer = SDL_CreateRenderer(window, nullptr);
     if (!renderer) {
         SDL_DestroyWindow(window);
         SDL_Quit();
@@ -59,5 +57,5 @@ void Window::present(const uint32_t* pixelData) {
 }
 
 bool Window::pollEvent(SDL_Event& event) {
-    return SDL_PollEvent(&event) != 0;
+    return SDL_PollEvent(&event);
 }
