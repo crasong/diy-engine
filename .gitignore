@@ -1,0 +1,151 @@
+# Build directories
+build/
+bin/
+obj/
+out/
+target/
+cmake-build-*/
+
+# Compiled Object files
+*.o
+*.obj
+*.ko
+*.elf
+
+# Precompiled Headers
+*.gch
+*.pch
+
+# Compiled Dynamic libraries
+*.so
+*.dylib
+*.dll
+
+# Compiled Static libraries
+*.a
+*.lib
+*.lai
+*.la
+*.lo
+
+# Executables
+*.exe
+*.out
+*.app
+renderer
+diy-engine
+
+# Debug files
+*.dSYM/
+*.su
+*.idb
+*.pdb
+
+# CMake
+CMakeCache.txt
+CMakeFiles/
+CMakeScripts/
+cmake_install.cmake
+install_manifest.txt
+compile_commands.json
+CTestTestfile.cmake
+_deps/
+
+# Make
+*.mk
+Makefile
+
+# Ninja
+.ninja_deps
+.ninja_log
+build.ninja
+
+# VS Code
+.vscode/
+*.code-workspace
+
+# Visual Studio
+.vs/
+*.user
+*.userosscache
+*.sln.docstates
+*.suo
+*.vcxproj.filters
+*.vcxproj.user
+
+# CLion / JetBrains IDEs
+.idea/
+cmake-build-*/
+*.iml
+
+# Xcode
+*.xcodeproj/
+*.xcworkspace/
+xcuserdata/
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Linux
+*~
+.fuse_hidden*
+.directory
+.Trash-*
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# Temporary files
+*.tmp
+*.temp
+*.swp
+*.swo
+*~
+.*.swp
+
+# Log files
+*.log
+
+# Core dumps (only at root level, not src/core/)
+/core
+/core.*
+/vgcore.*
+
+# Profiling data
+*.prof
+gmon.out
+callgrind.out.*
+perf.data*
+
+# Dependencies (if using package managers)
+vcpkg_installed/
+conan/
+.conan/
+
+# Output images/videos (optional - uncomment if you want to track these)
+# screenshots/
+# *.png
+# *.jpg
+# *.bmp
+# *.ppm
+# *.tga
+# *.mp4
+# *.gif
+
+# Test output
+test_output/
+test_results/
+
+# Documentation build
+docs/html/
+docs/latex/
+doxygen/
+
+# Editor backups
+*.bak
+*.orig
