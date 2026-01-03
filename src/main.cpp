@@ -1,5 +1,7 @@
+#pragma once
 #include "core/window.h"
 #include "core/framebuffer.h"
+#include "image/primitives.h"
 #include <iostream>
 
 const int WINDOW_WIDTH = 800;
@@ -38,15 +40,10 @@ int main(int argc, char* argv[]) {
             // YOUR RENDERING CODE GOES HERE!
             // ========================================
 
-            // Example: Draw a simple gradient
-            for (int y = 0; y < WINDOW_HEIGHT; y++) {
-                for (int x = 0; x < WINDOW_WIDTH; x++) {
-                    uint8_t r = (x * 255) / WINDOW_WIDTH;
-                    uint8_t g = (y * 255) / WINDOW_HEIGHT;
-                    uint8_t b = 128;
-                    framebuffer.setPixel(x, y, makeColor(r, g, b));
-                }
-            }
+            // Draw a simple gradient
+            FillWithGradient (framebuffer);
+            // Then draw a red line over that
+            DrawLine(10, 10, 600, 400, color::red(), framebuffer);
 
             // Display framebuffer
             window.present(framebuffer.data());
