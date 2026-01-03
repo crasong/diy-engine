@@ -51,9 +51,8 @@ set(SOURCES
     src/main.cpp
     src/core/framebuffer.cpp
     src/core/window.cpp
-    # Math files will go here as you create them
-    # src/math/vec3.cpp
-    # src/math/mat4.cpp
+    # Note: vec3.h, mat4.h, and color.h are header-only
+    # Add .cpp files here only if you create them later
 )
 
 # Create executable
