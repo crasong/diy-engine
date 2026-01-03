@@ -6,35 +6,42 @@ A from-scratch 3D software renderer built to learn graphics programming fundamen
 
 This project uses **minimal external dependencies** - only SDL3 for windowing and pixel display. Everything else (math, rasterization, transformations, lighting, textures) is implemented from scratch.
 
+**Self-contained build:** SDL3 is automatically downloaded and built via CMake FetchContent. No manual installation needed!
+
 ## Quick Start
 
 ### Prerequisites
 
-**Linux (Ubuntu/Debian)**
-```bash
-sudo apt-get install build-essential cmake libsdl3-dev
-```
+**All Platforms:**
+- CMake 3.14 or higher
+- C++17 compatible compiler (GCC, Clang, MSVC)
+- Git
+- Internet connection (for first build)
 
-**macOS**
-```bash
-brew install cmake sdl3
-```
-
-**Windows**
-- Install Visual Studio or MinGW
-- Download SDL3 from https://www.libsdl.org/ or use vcpkg: `vcpkg install sdl3`
+**That's it!** SDL3 will be downloaded and built automatically.
 
 ### Build and Run
 
 ```bash
+# Clone the repository
+git clone https://github.com/yourusername/diy-engine.git
+cd diy-engine
+
+# Build (downloads SDL3 automatically on first run)
 mkdir build
 cd build
 cmake ..
-make
+cmake --build .
+
+# Run
 ./renderer
 ```
 
+**First build takes 2-5 minutes** (building SDL3). Subsequent builds are fast.
+
 Press ESC to quit.
+
+**Need help?** See [BUILD.md](BUILD.md) for detailed build instructions and troubleshooting.
 
 ## Project Structure
 

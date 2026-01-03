@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.10)
+cmake_minimum_required(VERSION 3.14)  # Minimum for FetchContent
 project(DIYEngine VERSION 1.0)
 
 # C++ Standard
@@ -15,9 +15,33 @@ endif()
 # Enable optimizations in release mode
 set(CMAKE_CXX_FLAGS_RELEASE "-O3")
 
-# Find SDL3 (only external dependency for windowing)
-find_package(SDL3 REQUIRED)
-include_directories(${SDL3_INCLUDE_DIRS})
+# Option to use system SDL3 or fetch from source
+option(USE_SYSTEM_SDL3 "Use system-installed SDL3 instead of fetching" OFF)
+
+if(USE_SYSTEM_SDL3)
+    # Try to find system SDL3
+    find_package(SDL3 REQUIRED)
+else()
+    # Fetch SDL3 from GitHub
+    include(FetchContent)
+
+    message(STATUS "Fetching SDL3 from source...")
+
+    FetchContent_Declare(
+        SDL3
+        GIT_REPOSITORY https://github.com/libsdl-org/SDL.git
+        GIT_TAG main  # Or use a specific release tag like "release-3.1.2"
+        GIT_SHALLOW TRUE
+        GIT_PROGRESS TRUE
+    )
+
+    # Configure SDL3 options (disable things we don't need)
+    set(SDL_SHARED ON CACHE BOOL "" FORCE)
+    set(SDL_STATIC OFF CACHE BOOL "" FORCE)
+    set(SDL_TEST OFF CACHE BOOL "" FORCE)
+
+    FetchContent_MakeAvailable(SDL3)
+endif()
 
 # Include directories
 include_directories(src)
@@ -36,7 +60,11 @@ set(SOURCES
 add_executable(renderer ${SOURCES})
 
 # Link libraries (only SDL3)
-target_link_libraries(renderer SDL3::SDL3)
+if(USE_SYSTEM_SDL3)
+    target_link_libraries(renderer SDL3::SDL3)
+else()
+    target_link_libraries(renderer SDL3::SDL3-shared)
+endif()
 
 # Optional: Add debug/release configurations
 if(CMAKE_BUILD_TYPE STREQUAL "Debug")
