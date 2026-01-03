@@ -63,8 +63,9 @@ Makefile
 .ninja_log
 build.ninja
 
-# VS Code
-.vscode/
+# VS Code (allow tasks.json, ignore personal settings)
+.vscode/settings.json
+.vscode/launch.json
 *.code-workspace
 
 # Visual Studio
