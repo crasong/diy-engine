@@ -22,10 +22,10 @@ int main(int argc, char* argv[]) {
         while (running) {
             // Handle events
             while (window.pollEvent(event)) {
-                if (event.type == SDL_QUIT) {
+                if (event.type == SDL_EVENT_QUIT) {
                     running = false;
-                } else if (event.type == SDL_KEYDOWN) {
-                    if (event.key.keysym.sym == SDLK_ESCAPE) {
+                } else if (event.type == SDL_EVENT_KEY_DOWN) {
+                    if (event.key.key == SDLK_ESCAPE) {
                         running = false;
                     }
                 }

@@ -52,7 +52,7 @@ Window::~Window() {
 void Window::present(const uint32_t* pixelData) {
     SDL_UpdateTexture(texture, nullptr, pixelData, width * sizeof(uint32_t));
     SDL_RenderClear(renderer);
-    SDL_RenderCopy(renderer, texture, nullptr, nullptr);
+    SDL_RenderTexture(renderer, texture, nullptr, nullptr);
     SDL_RenderPresent(renderer);
 }
 
