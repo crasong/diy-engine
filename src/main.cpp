@@ -43,7 +43,12 @@ int main(int argc, char* argv[]) {
             // Draw a simple gradient
             FillWithGradient (framebuffer);
             // Then draw a red line over that
-            DrawLine(10, 10, 600, 400, color::red(), framebuffer);
+            DrawLine(0, WINDOW_HEIGHT/2, WINDOW_WIDTH, WINDOW_HEIGHT/2, color::red(), framebuffer); // X-axis
+            DrawLine(WINDOW_WIDTH/2, 0, WINDOW_WIDTH/2, WINDOW_HEIGHT, color::green(), framebuffer); // Y-axis
+            DrawTriangle(WINDOW_WIDTH/2      , WINDOW_HEIGHT/4
+                        , WINDOW_WIDTH*3/4, WINDOW_HEIGHT*3/4
+                        , WINDOW_WIDTH/4, WINDOW_HEIGHT*3/4
+                        , color::cyan(), framebuffer);
 
             // Display framebuffer
             window.present(framebuffer.data());

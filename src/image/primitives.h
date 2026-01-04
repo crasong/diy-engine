@@ -28,6 +28,12 @@ static void DrawLine(int x0, int y0, int x1, int y1, color color, Framebuffer& f
     }
 }
 
+static void DrawTriangle(int x0, int y0, int x1, int y1, int x2, int y2, color color, Framebuffer& framebuffer) {
+    DrawLine(x0, y0, x1, y1, color, framebuffer);
+    DrawLine(x1, y1, x2, y2, color, framebuffer);
+    DrawLine(x2, y2, x0, y0, color, framebuffer);
+}
+
 static void FillWithGradient(Framebuffer& framebuffer) {
     const int windowHeight = framebuffer.getHeight();
     const int windowWidth = framebuffer.getWidth();
